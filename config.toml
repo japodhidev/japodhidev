@@ -5,6 +5,9 @@ theme = "japodhi"
 
 [params]
 	description = "Japodhi is writing computer programs."
+	[[params.links]]
+		github = "https://github.com/japodhidev/"
+		twitter = "https://twitter.com/japodhi_dev/"
 
 [menu]
 	[[menu.main]]

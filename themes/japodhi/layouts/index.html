@@ -4,6 +4,15 @@
 		<div class="landing-title">
 			<h1 class="title">{{ .Site.Title }}</h1>
 			<div class="landing-desc">{{ .Site.Params.description }}</div>
+			<div class="landing-links">
+				{{ range $elem_val := .Site.Params.links }}
+				{{ range $el_key, $el_val := $elem_val }}
+					<a href="{{ $el_val }}">
+						<i data-feather="{{ $el_key }}"></i>
+					</a>
+				{{ end }}
+				{{ end }}
+			</div>
 		</div>
 		<div class="landing-message">
 			{{ .Content }}
