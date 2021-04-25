@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Japodhi's Blog"
 theme = "japodhi"
 
+[params]
+	description = "Japodhi is writing computer programs."
+
 [menu]
 	[[menu.main]]
 		name = "Home"

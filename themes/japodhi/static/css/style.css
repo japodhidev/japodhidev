@@ -39,6 +39,40 @@ a {
 	text-align: center;
 }
 
+.landing-wrapper {
+	display: grid;
+	width: 100%;
+	min-height: 80vh;
+}
+
+.landing-content {
+	margin: auto;
+	width: 70%;
+}
+
+.landing-title {
+	padding: 2rem 0;
+}
+
+.landing-title h1.title {
+	font-size: 4.3rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.landing-title div.landing-desc {
+	font-size: 1.3rem;
+	padding: 1.4rem 0;
+	text-align: center;
+	font-style: italic;
+	color: var(--accent);
+}
+
+.landing-message {
+	padding: 2rem 0;
+	font-size: 1.17rem;
+}
+
 .title {
 	text-align: center;
 	padding: 0.5rem;
