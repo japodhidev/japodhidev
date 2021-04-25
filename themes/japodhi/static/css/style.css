@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0.8rem 0;
 }
 
+p {
+	margin-bottom: 0.7rem;
+}
+
 .btn-group-sm > .btn, .btn-sm {
 	padding: .25rem .2rem .25rem 0;
 	font-size: 1rem;
@@ -97,14 +101,20 @@ a {
 }
 
 .post {
+	width: 75%;
+	margin: 3.2rem auto;
 }
 
 .post-header {
 	text-align: center;
+	font-size: 2.6rem;
+	padding: 0.4rem 0;
 }
 
 .post-content {
 	text-align: left;
+	padding: 1rem 0.4rem;
+	font-size: 1rem;
 }
 
 .post-list {
@@ -220,10 +230,18 @@ a {
 		flex-direction: row;
 	}
 
+	#nav-wrapper {
+		padding-top: 1rem;
+	}
+
 	#nav-wrapper .nav a.nav-link {
 		padding: 0.4rem 0.6rem;
 	}
 
+	#content {
+		width: 90%;
+		max-width: 100%;
+	}
 
 	.landing-content {
 		width: 100%;
@@ -231,6 +249,10 @@ a {
 
 	.landing-title .title {
 		font-size: 3.6rem;
+	}
+
+	.landing-message {
+		font-size: 1.02rem;
 	}
 
 	.title h1 {
@@ -258,5 +280,14 @@ a {
 
 	.summary {
 		margin: 0.3rem 0;
+	}
+
+	.post {
+		margin: 2.3rem auto;
+		width: 100%;
+	}
+
+	.post-header {
+		text-align: left;
 	}
 }
