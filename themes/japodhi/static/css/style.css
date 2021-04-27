@@ -11,6 +11,40 @@
 }
 
 /**
+ * Fonts
+ */
+
+@font-face {
+	font-family: 'Palanquin';
+	src: url("../fonts/palanquin/palanquin-regular.ttf") format('truetype');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Work Sans';
+	src: url("../fonts/WorkSans-Regular.ttf") format('truetype');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Work Sans Italic';
+	src: url("../fonts/WorkSans-Italic.ttf") format('truetype');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Work Sans Bold';
+	src: url("../fonts/work-sans/WorkSans-SemiBold.ttf") format('truetype');
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Work Sans Bold';
+	src: url("../fonts/work-sans/WorkSans-Bold.ttf") format('truetype');
+	font-weight: 700;
+}
+
+/**
  * Bootsrap overrides.
  */
 
