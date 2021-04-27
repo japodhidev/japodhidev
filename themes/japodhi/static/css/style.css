@@ -16,32 +16,37 @@
 
 @font-face {
 	font-family: 'Palanquin';
-	src: url("../fonts/palanquin/palanquin-regular.ttf") format('truetype');
+	src: url("/fonts/palanquin/palanquin-regular.ttf") format('truetype');
 	font-weight: 400;
 }
 
 @font-face {
 	font-family: 'Work Sans';
-	src: url("../fonts/WorkSans-Regular.ttf") format('truetype');
+	src: url("/fonts/work-sans/WorkSans-Regular.ttf") format('truetype');
 	font-weight: 400;
 }
 
 @font-face {
 	font-family: 'Work Sans Italic';
-	src: url("../fonts/WorkSans-Italic.ttf") format('truetype');
+	src: url("/fonts/work-sans/WorkSans-Italic.ttf") format('truetype');
 	font-weight: 400;
 }
 
 @font-face {
 	font-family: 'Work Sans Bold';
-	src: url("../fonts/work-sans/WorkSans-SemiBold.ttf") format('truetype');
+	src: url("/fonts/work-sans/WorkSans-SemiBold.ttf") format('truetype');
 	font-weight: 600;
 }
 
 @font-face {
 	font-family: 'Work Sans Bold';
-	src: url("../fonts/work-sans/WorkSans-Bold.ttf") format('truetype');
+	src: url("/fonts/work-sans/WorkSans-Bold.ttf") format('truetype');
 	font-weight: 700;
+}
+
+body {
+	margin: 0;
+	font-family: "Work Sans", sans-serif;
 }
 
 /**
@@ -96,9 +101,11 @@ a {
 	font-size: 4.3rem;
 	font-weight: 700;
 	line-height: 1.3;
+	font-family: "Work Sans Bold", sans-serif;
 }
 
 .landing-title div.landing-desc {
+	font-family: "Work Sans Italic", sans-serif;
 	font-size: 1.3rem;
 	padding: 1.4rem 0;
 	text-align: center;
