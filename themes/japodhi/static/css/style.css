@@ -71,16 +71,45 @@ a {
 	color: var(--bluish);
 }
 
-#content, #nav-wrapper, footer {
+#content, footer {
 	margin: 0 auto;
 	display: block;
 	width: 84%;
 	max-width: 94%;
 }
 
-#nav-wrapper, footer {
+footer {
 	text-align: center;
 }
+
+nav#nav ul.navbar-nav li.nav-item a.nav-link {
+	font-family: "Palanquin", sans-serif;
+}
+
+.navbar-expand-lg {
+	justify-content: space-around;
+}
+
+.navbar-collapse {
+	flex-grow: 0;
+}
+
+.navbar-brand {
+	color: var(--bg);
+}
+
+a.navbar-brand:hover {
+	text-decoration: none;
+	cursor: pointer;
+	color: var(--dark-gray);
+}
+
+.navbar-light .navbar-toggler {
+	color: var(--bg);
+	border-color: var(--dark-gray);
+}
+
+/** End Bootstrap overrides */
 
 .landing-wrapper {
 	display: grid;
@@ -105,12 +134,11 @@ a {
 }
 
 .landing-title div.landing-desc {
-	font-family: "Work Sans Italic", sans-serif;
-	font-size: 1.3rem;
-	padding: 1.4rem 0;
+	font-family: "Palanquin", sans-serif;
+	font-size: 1rem;
+	padding: 1rem 0;
 	text-align: center;
-	font-style: italic;
-	color: var(--accent);
+	color: var(--dark-gray);
 }
 
 .landing-links {
@@ -118,21 +146,26 @@ a {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	margin: 0.8rem 0;
 }
 
 .landing-links a {
 	margin: 0 0.3rem;
-	padding: 0.4rem 0.7rem;
+	padding: 0.6rem 1rem;
 	color: var(--highlight);
+	border: 2px solid var(--greenish);
+	border-radius: 4px;
 }
 
 .landing-links a:hover {
 	color: var(--accent);
+	background: var(--bg);
+	border: 2px solid transparent;
 }
 
 .landing-message {
 	padding: 2rem 0;
-	font-size: 1.17rem;
+	font-size: 1rem;
 }
 
 .title {
@@ -220,31 +253,24 @@ a {
 	font-size: 1rem !important;
 }
 
-#nav-wrapper {
-	height: 3.1rem;
-}
-
-#nav-wrapper .nav a.nav-link {
+nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	display: inline-flex;
 	align-items: center;
 	padding: 0.8rem 1.2rem;
+	color: var(--bg);
 }
 
-#nav-wrapper .nav a.nav-link:hover {
-	color: var(--accent);
-}
-
-#nav-wrapper .nav a.nav-link div.icon {
-
-}
-
-#nav-wrapper .nav a.nav-link div.a-text {
-	margin-left: 0.5rem;
+nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
+	color: var(--highlight);
+	text-decoration: underline;
 }
 
 #footer {
-	display: block;
-	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 36%;
+	margin: 0 auto;
 }
 
 /**
@@ -269,14 +295,6 @@ a {
 	#nav {
 		display: flex;
 		flex-direction: row;
-	}
-
-	#nav-wrapper {
-		padding-top: 1rem;
-	}
-
-	#nav-wrapper .nav a.nav-link {
-		padding: 0.4rem 0.6rem;
 	}
 
 	#content {

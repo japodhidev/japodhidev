@@ -1,6 +1,6 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "Japodhi's Blog"
+title = "Welcome,"
 theme = "japodhi"
 
 [params]
@@ -8,6 +8,8 @@ theme = "japodhi"
 	[[params.links]]
 		github = "https://github.com/japodhidev/"
 		twitter = "https://twitter.com/japodhi_dev/"
+		linkedin = "https://www.linkedin.com/in/finch-ochieng/"
+		archive = "https://bitbucket.org/japodhidev/"
 
 [menu]
 	[[menu.main]]
