@@ -44,6 +44,11 @@
 	font-weight: 700;
 }
 
+@font-face {
+	font-family: 'Jet Brains Mono';
+	src: url("/fonts/JetBrains-Mono-RegularNF.ttf") format('truetype');
+}
+
 body {
 	margin: 0;
 	font-family: "Work Sans", sans-serif;
@@ -72,7 +77,11 @@ a {
 }
 
 pre {
-	padding: 1rem;
+	padding: 1.5rem;
+}
+
+pre code {
+	font-family: "Jet Brains Mono", monospace;
 }
 
 #content, footer {
