@@ -84,6 +84,19 @@ pre code {
 	font-family: "Jet Brains Mono", monospace;
 }
 
+blockquote {
+	margin: 1rem 0;
+	padding: 1rem 2rem;
+	background: var(--fg);
+	width: inherit;
+	border-radius: 8px;
+	font-size: 0.9rem;
+}
+
+blockquote p {
+	margin: 0;
+}
+
 #content, footer {
 	margin: 0 auto;
 	display: block;
@@ -209,6 +222,11 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	text-align: left;
 	padding: 1rem 0.4rem;
 	font-size: 1rem;
+}
+
+.post-content h5 {
+	font-weight: 600;
+	font-size: 1.4em;
 }
 
 .post-list {
