@@ -80,7 +80,7 @@ pre {
 	padding: 1.5rem;
 }
 
-pre code {
+pre code, code {
 	font-family: "Jet Brains Mono", monospace;
 }
 
@@ -104,8 +104,15 @@ blockquote p {
 	max-width: 94%;
 }
 
+#content {
+	min-height: 75vh;
+}
+
 footer {
 	text-align: center;
+	position: relative;
+	top: 0;
+	left: 0;
 }
 
 nav#nav ul.navbar-nav li.nav-item a.nav-link {
@@ -230,7 +237,7 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 }
 
 .post-list {
-	margin: 0 auto;
+	margin: 1rem auto;
 	width: 70%;
 	background: #B3B1AD05;
 	border: 1px solid #B3B1AD24;
@@ -254,6 +261,10 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	color: var(--dark-gray);
 	display: block;
 	width: inherit;
+}
+
+.summary h5, .summary p {
+	font-size: 1.1rem;
 }
 
 .metadata {
