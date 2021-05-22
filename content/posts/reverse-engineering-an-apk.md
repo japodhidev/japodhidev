@@ -5,7 +5,7 @@ draft: true
 tags: ["reverse engineering", "android", "java"]
 ---
 
-##### Trying out reverse engineering an Android application.
+##### Trying out reverse engineering on an Android application.
 
 <!--more-->
 
@@ -54,7 +54,7 @@ Once the disassembly and decompilation was done, I was left with a directory str
 Most of the work lay in the _sources_ folder. I'll list a few methods I used to remove the ads now.
 
 1. Premature return statements
-    - This was the quick and dirty option. Simply placing a return statement before any ad related code is executed so that the function/method returns without performing any task.
+    - A quick and dirty option. Simply placing a return statement before any ad related code is executed so that the function/method returns without performing any task.
     
     ```java
    private void requestNewInterstitial() {
@@ -67,6 +67,8 @@ Most of the work lay in the _sources_ folder. I'll list a few methods I used to 
    ```java
    private void requestNewInterstitial() {
       return;
+      // this.mInterstitialAd = new InterstitialAd(this);
+      ...
    }
    ```
 2. Ensuring null checks fail
