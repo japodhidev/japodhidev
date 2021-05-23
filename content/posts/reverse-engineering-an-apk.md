@@ -41,9 +41,40 @@ I found two instances of interstitial ads in this Bible application:
 
 The screenshots below demonstrate what the app looked like with and without the ad:
 
-![Screen1](/img/with-ad.png) ![Screen2](/img/without-ad.png)
+{{< rawhtml >}}
+    <div class="img-wrapper">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+             <img src="/img/with-ad.png" alt="ad present" class="img-thumbnail">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+             <img src="/img/without-ad.png" alt="ad removed" class="img-thumbnail">
+        </a>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Before(left) and after(right)</p>
+            <div class="img-wrapper">
+                <img src="/img/with-ad.png" alt="ad present">
+                <img src="/img/without-ad.png" alt="ad present">
+             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-##### Solution/s
+{{< /rawhtml >}}
+
+##### Solutions
 
 Once the disassembly and decompilation was done, I was left with a directory structure that loosely resembles that of a typical Android Studio project. Of importance were:
 
@@ -54,7 +85,7 @@ Once the disassembly and decompilation was done, I was left with a directory str
 Most of the work lay in the _sources_ folder. I'll list a few methods I used to remove the ads now.
 
 1. Premature return statements
-    - A quick and dirty option. Simply placing a return statement before any ad related code is executed so that the function/method returns without performing any task.
+    - A quick and dirty method. Simply placing a return statement before any ad related code is executed so that the function/method returns without performing any task.
     
     ```java
    private void requestNewInterstitial() {
