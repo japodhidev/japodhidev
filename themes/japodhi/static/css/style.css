@@ -349,7 +349,7 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	font-size: 1rem;
 }
 
-.metadata div.meta-tags a {
+.metadata div.meta-tags p {
 	color: var(--greenish);
 	margin-right: 0.3rem;
 	border: 0;
