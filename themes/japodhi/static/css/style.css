@@ -56,6 +56,10 @@ body {
 	color: var(--whitish);
 }
 
+em {
+	font-family: "Palanquin", sans-serif;
+}
+
 /**
  * Bootsrap overrides.
  */
@@ -193,6 +197,26 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	padding: 1rem 0;
 	text-align: center;
 	color: var(--dark-gray);
+}
+
+.landing-btn {
+	margin: 7rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.landing-btn a {
+	color: var(--whitish);
+	padding: 0.6rem;
+	text-align: center;
+	border: 2px solid var(--bg);
+	border-radius: 4px;
+}
+
+.landing-btn a:hover {
+	background: var(--bg);
+	border: 2px solid var(--accent);
 }
 
 .landing-links {
@@ -454,6 +478,7 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 	#content {
 		width: 90%;
 		max-width: 100%;
+		min-height: 60%;
 	}
 
 	.landing-content {

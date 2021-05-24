@@ -25,10 +25,6 @@ menu:
     pre: "info"
     url: "/about/"
     weight: 3
-  - name: "Tags"
-    pre: "tag"
-    url: "/tags/"
-    weight: 4
 
 markup:
   highlight:
