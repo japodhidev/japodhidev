@@ -279,6 +279,10 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 	font-size: 1.5rem;
 }
 
+.post-list span a {
+	font-size: 1.2rem;
+}
+
 .post-list span a:hover {
 	color: var(--highlight);
 }
@@ -433,13 +437,13 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 	}
 
 	.custom-nav-link {
-		color: var(--bg);
+		color: var(--whitish);
 		padding: 0.28rem;
 	}
 
 	.custom-nav-link svg {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		stroke-width: 0.11rem;
 	}
 
@@ -462,6 +466,10 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 
 	.landing-message {
 		font-size: 1.02rem;
+	}
+
+	.landing-links {
+		margin: 1.2rem 0;
 	}
 
 	.title h1 {
@@ -500,6 +508,11 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 
 	.metadata div.meta-date {
 		font-size: 13px;
+	}
+
+	.btn-group-sm > .btn, .btn-sm {
+		padding: .25rem .2rem .25rem 0;
+		font-size: 0.9rem;
 	}
 
 	.summary {

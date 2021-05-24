@@ -27,7 +27,7 @@
             <ul class="custom-ul-navbar">
                 {{ range .Site.Menus.main }}
                 <li class="custom-nav-item">
-                    <a href="{{ .URL }}" class="custom-nav-link">
+                    <a href="{{ .URL }}" class="custom-nav-link" data-bs-toggle="tooltip" title="{{ .Name }}">
                         <i data-feather="{{ .Pre }}"></i>
                     </a>
                 </li>

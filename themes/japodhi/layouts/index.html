@@ -7,7 +7,7 @@
 			<div class="landing-links">
 				{{ range $elem_val := .Site.Params.links }}
 				{{ range $el_key, $el_val := $elem_val }}
-					<a href="{{ $el_val }}">
+					<a href="{{ $el_val }}" data-bs-toggle="tooltip" title="{{ $el_key | humanize }}">
 						<i data-feather="{{ $el_key }}"></i>
 					</a>
 				{{ end }}
