@@ -21,10 +21,14 @@ menu:
     pre: "pen-tool"
     url: "/posts/"
     weight: 2
+  - name: "About"
+    pre: "info"
+    url: "/about/"
+    weight: 3
   - name: "Tags"
     pre: "tag"
     url: "/tags/"
-    weight: 3
+    weight: 4
 
 markup:
   highlight:

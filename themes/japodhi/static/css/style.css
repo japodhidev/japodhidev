@@ -137,7 +137,6 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 .navbar-brand {
 	font-family: "Work Sans Semi-Bold", sans-serif;
 	padding: .3125rem;
-	border-bottom: 2px solid var(--greenish);
 }
 
 .navbar-brand:hover {
@@ -158,6 +157,10 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 
 .img-thumbnail {
 	width: 200px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: var(--whitish);
 }
 
 /** End Bootstrap overrides */
