@@ -1,5 +1,28 @@
+<script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/feather.min.js"></script>
 <script>
   feather.replace()
+</script>
+<!-- <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script type="IN/Share" data-url="{{ .Permalink }}"></script> -->
+<script >
+	$('#socials').css('display', 'none');
+	$('.bottom-menu').css('display', 'none');
+
+	$( window ).on('scroll', function () {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			$('.bottom-menu').css('display', 'block').fadeIn("slow");
+		}
+	})
+
+	$('.bottom-menu').on('click', function () {
+		$('#socials').toggle("slow")
+	})
+
+	$('.top').on('click', function(event) {
+		event.preventDefault();
+		$(document).scrollTop(0);
+		$('#socials').toggle("slow")
+	});
 </script>
