@@ -272,7 +272,7 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link {
 
 .post-content h5 {
 	font-weight: 600;
-	font-size: 1.7em;
+	font-size: 1.3em;
 	font-family: "Work Sans Semi-Bold", sans-serif;
 	margin: 1.5rem 0;
 }
@@ -396,7 +396,7 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 	z-index: 99;
 	right: 20px;
 	bottom: 20px;
-	border-radius: 26px;
+	border-radius: 30px;
 }
 
 .buttons .bottom-menu {
@@ -479,6 +479,13 @@ nav#nav ul.navbar-nav li.nav-item a.nav-link:hover {
 		display: flex;
 		flex-direction: row;
 	}*/
+
+	/* Bootstrap ovverride */
+	ul, ol {
+		padding-left: 0.8rem;
+	}
+	/* End Bootstrap ovverride */
+
 	#nav .menu {
 		display: none;
 	}

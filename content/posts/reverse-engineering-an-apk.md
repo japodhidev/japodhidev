@@ -116,6 +116,7 @@ Most of the work lay in the _sources_ folder. I'll list a few methods I used to 
                 ...
     ```
 3. Reversing comparison operators.
+
     - A thoughtful `<` in place of a `>` or vice-versa would suffice.
     The code below compares the value of a random integer between 0-100 against the value of the integer represented by the variable `R.string.app_code_number (2131820585)`. The comparison would always evaluate to true.
     By replacing the `<` _less than_ operator with the `>` _greater than_ operator, the check would fail, and the subsequent code would not be executed.
