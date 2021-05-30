@@ -5,7 +5,7 @@ draft: false
 tags: ["reverse engineering", "android", "java"]
 ---
 
-##### Trying out reverse engineering on an Android application.
+##### Getting rid of Interstitial ads in an Android application.
 
 <!--more-->
 
