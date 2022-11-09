@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 26 Jan 2020 23:11:13 +0000</lastBuildDate><atom:link href="https://japodhidev.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>HSL Color Picker</title>
+      <link>https://japodhidev.github.io/posts/hsl-color-picker/</link>
+      <pubDate>Wed, 09 Nov 2022 22:40:36 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/posts/hsl-color-picker/</guid>
+      <description>&lt;h5 id=&#34;hsla-colour-picker&#34;&gt;HSL/A Colour Picker&lt;/h5&gt;</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>https://japodhidev.github.io/about/</link>
       <pubDate>Mon, 24 May 2021 20:24:56 +0300</pubDate>
@@ -22,6 +31,15 @@
       
       <guid>https://japodhidev.github.io/posts/reverse-engineering-an-apk/</guid>
       <description>&lt;h5 id=&#34;getting-rid-of-interstitial-ads-in-an-android-application&#34;&gt;Getting rid of Interstitial ads in an Android application.&lt;/h5&gt;</description>
+    </item>
+    
+    <item>
+      <title>Code Test</title>
+      <link>https://japodhidev.github.io/posts/code-test/</link>
+      <pubDate>Wed, 19 May 2021 10:19:52 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/posts/code-test/</guid>
+      <description>&lt;p&gt;Test syntax highlighting&lt;/p&gt;</description>
     </item>
     
     <item>

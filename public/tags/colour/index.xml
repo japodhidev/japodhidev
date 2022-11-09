@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>colour on Japodhi&#39;s Blog</title>
+    <link>https://japodhidev.github.io/tags/colour/</link>
+    <description>Recent content in colour on Japodhi&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 09 Nov 2022 22:40:36 +0300</lastBuildDate><atom:link href="https://japodhidev.github.io/tags/colour/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HSL Color Picker</title>
+      <link>https://japodhidev.github.io/posts/hsl-color-picker/</link>
+      <pubDate>Wed, 09 Nov 2022 22:40:36 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/posts/hsl-color-picker/</guid>
+      <description>&lt;h5 id=&#34;hsla-colour-picker&#34;&gt;HSL/A Colour Picker&lt;/h5&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

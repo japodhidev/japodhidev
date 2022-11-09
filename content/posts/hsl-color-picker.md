@@ -1,7 +1,7 @@
 ---
 title: "HSL Color Picker"
 date: 2022-11-09T22:40:36+03:00
-draft: true
+draft: false
 tags: ["hsl", "color", "colour", "CSS3", "Vue.js", "Javascript"]
 ---
 ##### HSL/A Colour Picker
@@ -61,5 +61,5 @@ I must say, there's no shortage of color pickers online, [iro.js](https://iro.js
 The project is perfect for my daily use. Plus it's relatively straightforward to fire up and use.
 I should mention that it's still under a continuous state of improvement and development.
 
-[HSL Color Picker](https://bitbucket.org/japodhidev/hsl-color-picker/) is available in my repository. It's also hosted on `Vercel` at this [location]().
+[HSL Color Picker](https://bitbucket.org/japodhidev/hsl-color-picker/) is available in my repository. It's also hosted on `Vercel` at this [location](https://color-picker-virid.vercel.app/color).
 

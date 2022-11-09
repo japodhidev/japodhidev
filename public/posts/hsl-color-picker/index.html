@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    
+    <title>Japodhi&#39;s Blog | HSL Color Picker</title>
+</head>
+
+<div id="nav-wrapper" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+        <a href="/" class="navbar-brand">Japodhi's Blog</a>
+        <div class="menu">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        
+                        Home
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/posts/" class="nav-link">
+                        
+                        Posts
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/about/" class="nav-link">
+                        
+                        About
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        <div id="custom-collapse">
+            <ul class="custom-ul-navbar">
+                
+                <li class="custom-nav-item">
+                    <a href="/" class="custom-nav-link" data-bs-toggle="tooltip" title="Home">
+                        <i data-feather="home"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/posts/" class="custom-nav-link" data-bs-toggle="tooltip" title="Posts">
+                        <i data-feather="pen-tool"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/about/" class="custom-nav-link" data-bs-toggle="tooltip" title="About">
+                        <i data-feather="info"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</div><body><div id="content" class="container-fluid">
+<div class="post">
+	<div class="post-header">
+		<h1>HSL Color Picker</h1>
+	</div>
+	<div class="metadata">
+	<div class="meta-date">
+		
+		
+		<i data-feather="calendar"></i>
+		<time datetime="90911-40-940">Nov 9, 2022</time>
+	</div>
+	<div class="meta-tags">
+		
+		<i data-feather="tag"></i>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/hsl">hsl</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/color">color</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/colour">colour</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/css3">CSS3</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/vue.js">Vue.js</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/javascript">Javascript</a>
+		
+		
+	</div>
+</div>
+	<div class="post-content">
+		<h5 id="hsla-colour-picker">HSL/A Colour Picker</h5>
+<h5 id="background">Background</h5>
+<p>Colour in my web development experience was always represented in the most common formats known to most people, <code>RGB/A</code> and <code>HEX</code>.
+While reading through a book I picked up, I came across a new format: <code>HSL/A</code>. I thought I&rsquo;d give this new format a try.</p>
+<p>Diving deep into <code>HSL</code> <em>(Hue, Saturation, Lightness)</em> and other related color formats, <code>HSB</code>, is way out of the scope of this
+short blog post. I&rsquo;ll therefore leave out any esoteric vocabulary that only <code>colour people</code> dare use.</p>
+<p>Working with <code>HSL</code> values as opposed to <code>RGB/A</code> in <code>CSS</code> was a breeze for once. Take this pair of colors for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> #03369E<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> #507dd7<span style="color:#f92672">;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> <span style="color:#f92672">hsl</span><span style="color:#f92672">(</span><span style="color:#f92672">220</span><span style="color:#f92672">,</span> <span style="color:#f92672">95</span><span style="color:#f92672">%,</span> <span style="color:#f92672">34</span><span style="color:#f92672">%);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">color</span><span style="color:#f92672">:</span> <span style="color:#f92672">hsl</span><span style="color:#f92672">(</span><span style="color:#f92672">220</span><span style="color:#f92672">,</span> <span style="color:#f92672">95</span><span style="color:#f92672">%,</span> <span style="color:#f92672">34</span><span style="color:#f92672">%);</span>
+</span></span></code></pre></div><p>They both represent the same pair of close shades of blue.
+The first pair, in <code>HEX</code> show so much variance in the values used as opposed the second pair.
+A change to a few shades up/down/left/right, would change the hexadecimal representation to a whole new set of characters which aren&rsquo;t particularly easy to remember.</p>
+<p>The <a href="https://www.refactoringui.com/">book</a> that influenced my shift in color representation format preferences has a line that reads:</p>
+<blockquote>
+<p>HSL fixes this by representing colours using attributes the human-eye intuitively perceives: hue, saturation and lightness.</p>
+</blockquote>
+<p>Armed with the indispensable knowledge of the different formats that can be used to represent color, I set out to put this newfound knowledge to good use.</p>
+<h5 id="colour-picker">Colour picker</h5>
+<p>I scoured the web for a great color picker and to no surprise, I came across some really good ones.
+Adobe&rsquo;s <a href="https://color.adobe.com/create/color-wheel">Color Wheel</a> is the first thing that comes to mind.</p>
+<p>I wanted something different though. See, the book said something about preparing a palette of different colours and their respective shades in advance.
+9 was a number the book suggested would be great for the amount of shades of any colour one ought to have.</p>
+<p>The goal was to create a generator of sorts. One that could not only produce any colour on request, but could also aid in the creation of a palette of colours.</p>
+<h5 id="my-solution">My solution</h5>
+<p>I must say, there&rsquo;s no shortage of color pickers online, <a href="https://iro.js.org/">iro.js</a>. Nonetheless, I felt the need to build one that&rsquo;s suited to my specific needs.</p>
+<p><a href="https://vuejs.org/">Vue.js</a> was my framework of choice. The aptly named <code>HSL Color Picker</code> manages to achieve the following goals:</p>
+<ul>
+<li>Provides a way to generate <code>HSL</code> representations of colors.</li>
+<li>Generates a 9 colour palette on request.</li>
+<li>Provides a means of copying generated colors to the clipboard.</li>
+</ul>
+<p>The project is perfect for my daily use. Plus it&rsquo;s relatively straightforward to fire up and use.
+I should mention that it&rsquo;s still under a continuous state of improvement and development.</p>
+<p><a href="https://bitbucket.org/japodhidev/hsl-color-picker/">HSL Color Picker</a> is available in my repository. It&rsquo;s also hosted on <code>Vercel</code> at this <a href="https://color-picker-virid.vercel.app/color">location</a>.</p>
+	</div>
+	<div class="buttons">
+	<button class="bottom-menu">
+		<i data-feather="menu"></i>
+	</button>
+	<div id="socials">
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fjapodhidev.github.io%2fposts%2fhsl-color-picker%2f" data-bs-toggle="tooltip" title="Share on LinkedIn">
+			<i data-feather="linkedin"></i>
+		</a>
+		<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<a href="#" class="top" data-bs-toggle="tooltip" title="Back to top">
+			<i data-feather="arrow-up"></i>
+		</a>
+	</div>
+</div>
+</div>
+
+        </div><footer>
+	<div id="footer" class="mt-5 mb-2">
+		<p>&#9874; by <a href="https://twitter.com/japodhi_dev/">Japodhi</a></p>
+		<p>2021</p>
+		<p>Powered by <a href="htttp://gohugo.io">Hugo</a></p>
+	</div>
+</footer><script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+
+<script >
+	$('.buttons').css('width', 'max-content');
+	$('#socials').css('display', 'none');
+	$('.bottom-menu').css('display', 'none');
+
+	$( window ).on('scroll', function () {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			$('.bottom-menu').css('display', 'block').fadeIn("slow");
+		}
+	})
+
+	$('.bottom-menu').on('click', function () {
+		
+		let btnWidth = $('.buttons').css("width");
+		console.log(btnWidth);
+		if (btnWidth == 'max-content') {
+			$('.buttons').css('width', '260px');
+		} else if (btnWidth == '260px') {
+			$('.buttons').css('width', 'max-content');
+		}
+
+		$('#socials').toggle("slow");
+	})
+
+	$('.top').on('click', function(event) {
+		event.preventDefault();
+		$(document).scrollTop(0);
+		$('#socials').toggle("slow")
+	});
+</script></body>
+</html>
