@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    
+    <title>Japodhi&#39;s Blog | Reverse Engineering an Apk</title>
+</head>
+
+<div id="nav-wrapper" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+        <a href="/" class="navbar-brand">Japodhi's Blog</a>
+        <div class="menu">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        
+                        Home
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/posts/" class="nav-link">
+                        
+                        Posts
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/about/" class="nav-link">
+                        
+                        About
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        <div id="custom-collapse">
+            <ul class="custom-ul-navbar">
+                
+                <li class="custom-nav-item">
+                    <a href="/" class="custom-nav-link" data-bs-toggle="tooltip" title="Home">
+                        <i data-feather="home"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/posts/" class="custom-nav-link" data-bs-toggle="tooltip" title="Posts">
+                        <i data-feather="pen-tool"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/about/" class="custom-nav-link" data-bs-toggle="tooltip" title="About">
+                        <i data-feather="info"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</div><body><div id="content" class="container-fluid">
+<div class="post">
+	<div class="post-header">
+		<h1>Reverse Engineering an Apk</h1>
+	</div>
+	<div class="metadata">
+	<div class="meta-date">
+		
+		
+		<i data-feather="calendar"></i>
+		<time datetime="19195-46-1946">May 19, 2021</time>
+	</div>
+	<div class="meta-tags">
+		
+		<i data-feather="tag"></i>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/reverse-engineering">reverse engineering</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/android">android</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/java">java</a>
+		
+		
+	</div>
+</div>
+	<div class="post-content">
+		<h5 id="getting-rid-of-interstitial-ads-in-an-android-application">Getting rid of Interstitial ads in an Android application.</h5>
+<blockquote>
+<p><strong>Disclaimer!</strong>
+This article does not in any way intend to promote piracy.</p>
+<p>Developers have their own warranted reasons for including adverts inside applications packages.</p>
+</blockquote>
+<p>I found this particular Bible app on the Google Play Store and found it annoying (somewhat), that you had to get through an advert before using it.
+Ads would pop up every time you tried to use some of the app&rsquo;s features. So armed with nothing but good intentions and curiosity I set out to try to get rid of the ads.</p>
+<h5 id="tools">Tools</h5>
+<p>A list of the tools I used:</p>
+<ul>
+<li><a href="https://ibotpeaches.github.io/Apktool/">apktool</a> - disassemble Android application packages <em>(apks)</em>.</li>
+<li><a href="https://github.com/skylot/jadx">jadx</a> - decompile <code>Dex</code>/<code>Dalvik</code> code to <code>Java</code> code.</li>
+<li><a href="https://github.com/patrickfav/uber-apk-signer">uber-apk-signer</a> - sign, zip-align apks. Apks need to be signed if they are ever to be installed.</li>
+<li><a href="https://developer.android.com/studio">Android Device Emulator</a> (present within the Android Studio IDE)/Android phone.</li>
+</ul>
+<p>I will not be explaining how these tools work, it&rsquo;s beyond the scope of this article/post. I should however mention that you need a certificate if you plan on signing an apk.
+The only way (that I know of) to generate such a certificate would require a working installation of <a href="https://developer.android.com/studio">Android Studio</a>. This
+<a href="https://developer.android.com/studio/publish/app-signing#signing-manually">here</a> is a useful in-depth resource on how to go about signing apks.</p>
+<h5 id="the-problem">The problem</h5>
+<p><a href="">Interstitial Ads</a>. You may have heard of them or better still you may have encountered them. What they are is an unbearable annoyance that I desperately try to rid myself off of
+as should be evident in this article. There are varied opinions on the ethics of including interstitial ads in applications. My opinion on the inclusion or lack thereof of said ads is not of any importance since
+I&rsquo;m not an Android developer.</p>
+<p>I found two instances of interstitial ads in this Bible application:</p>
+<ul>
+<li>The first one was a fullscreen ad that covered the entire screen on initial app launch.</li>
+<li>The second one (annoying one) would appear when you used a feature within the app. I&rsquo;ll be focusing on this particular one.</li>
+</ul>
+<p>The screenshots below demonstrate what the app looked like with and without the ad:</p>
+<!-- rawhtml -->
+
+    <div class="img-wrapper">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+             <img src="/img/with-ad.png" alt="ad present" class="img-thumbnail">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+             <img src="/img/without-ad.png" alt="ad removed" class="img-thumbnail">
+        </a>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Before(left) and after(right)</p>
+            <div class="img-wrapper">
+                <img src="/img/with-ad.png" alt="ad present">
+                <img src="/img/without-ad.png" alt="ad present">
+             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<h5 id="solutions">Solutions</h5>
+<p>Once the disassembly and decompilation was done, I was left with a directory structure that loosely resembles that of a typical Android Studio project. Of importance were:</p>
+<ul>
+<li><em>res</em> - directory containing all layout related <code>XML</code> files</li>
+<li><em>sources</em> - directory containing all decompiled <code>Java</code> classes, including any third party libraries.</li>
+<li><em>AndroidManifest.xml</em> - <code>XML</code> file that lists permissions and stuff. Useful if you want to change the name of the apk.</li>
+</ul>
+<p>Most of the work lay in the <em>sources</em> folder. I&rsquo;ll list a few methods I used to remove the ads now.</p>
+<ol>
+<li>
+<p>Premature/empty return statements</p>
+<ul>
+<li>A quick and dirty method. Simply placing a return statement before any ad related code is executed so that the function/method returns without performing any task.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">requestNewInterstitial</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterstitialAd<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAdUnitId</span><span style="color:#f92672">(</span>getResources<span style="color:#f92672">().</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">string</span><span style="color:#f92672">.</span><span style="color:#a6e22e">interstitial_ad_unit_id</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span><span style="color:#f92672">.</span><span style="color:#a6e22e">loadAd</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AdRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">build</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">requestNewInterstitial</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// this.mInterstitialAd = new InterstitialAd(this);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Ensuring null checks fail.</p>
+<ul>
+<li>Another one of those easy fixes. Having a null check evaluate to true causes the code dependent on the null check not to be executed.
+Case in point, assigning a null value to the variable <code>this.mInterstitialAd</code>, ensures the if statement below will fail and as such any subsequent code will not be executed.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">goToNextLevel</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAdListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AdListener<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">...</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Reversing comparison operators.</p>
+<ul>
+<li>A thoughtful <code>&lt;</code> in place of a <code>&gt;</code> or vice-versa would suffice.
+The code below compares the value of a random integer between 0-100 against the value of the integer represented by the variable <code>R.string.app_code_number (2131820585)</code>. The comparison would always evaluate to true.
+By replacing the <code>&lt;</code> <em>less than</em> operator with the <code>&gt;</code> <em>greater than</em> operator, the check would fail, and the subsequent code would not be executed.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Random random <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>random<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>100<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>AdMainActivity<span style="color:#f92672">.</span><span style="color:#a6e22e">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getResources</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">string</span><span style="color:#f92672">.</span><span style="color:#a6e22e">app_code_number</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">intValue</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>AdMainActivity<span style="color:#f92672">.</span><span style="color:#a6e22e">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">v</span><span style="color:#f92672">.</span><span style="color:#a6e22e">isAdLoaded</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    AdMainActivity<span style="color:#f92672">.</span><span style="color:#a6e22e">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">v</span><span style="color:#f92672">.</span><span style="color:#a6e22e">displayLoadedAd</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    AdMainActivity<span style="color:#f92672">.</span><span style="color:#a6e22e">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">v</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mInterstitialAd</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAdListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> AdListener<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>    Random random <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>random<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>100<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>AdMainActivity<span style="color:#f92672">.</span><span style="color:#a6e22e">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getResources</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">string</span><span style="color:#f92672">.</span><span style="color:#a6e22e">app_code_number</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">intValue</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// No execution. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//if (AdMainActivity.this.v.isAdLoaded()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//AdMainActivity.this.v.displayLoadedAd();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//AdMainActivity.this.v.mInterstitialAd.setAdListener(new AdListener() {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">...</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Unloading/removing all code, layouts and views related to ads.</p>
+<ul>
+<li>This was the OP method. It was also the hardest and the most time-consuming. That makes it the best method.
+Within the <em>res</em> folder lay an <code>XML</code> file that held the layout for the ad:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;LinearLayout</span> <span style="color:#a6e22e">n1:gravity=</span><span style="color:#e6db74">&#34;center&#34;</span> <span style="color:#a6e22e">n1:id=</span><span style="color:#e6db74">&#34;@id/layout_adView&#34;</span> <span style="color:#a6e22e">n1:visibility=</span><span style="color:#e6db74">&#34;gone&#34;</span> <span style="color:#a6e22e">n1:layout_width=</span><span style="color:#e6db74">&#34;fill_parent&#34;</span> <span style="color:#a6e22e">n1:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span> <span style="color:#a6e22e">n1:layout_marginTop=</span><span style="color:#e6db74">&#34;@dimen/ads_padding&#34;</span> <span style="color:#a6e22e">n1:layout_marginBottom=</span><span style="color:#e6db74">&#34;@dimen/ads_padding&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;com.google.android.gms.ads.AdView</span> <span style="color:#a6e22e">n1:id=</span><span style="color:#e6db74">&#34;@id/adView&#34;</span> <span style="color:#a6e22e">n1:layout_width=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span> <span style="color:#a6e22e">n1:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span> <span style="color:#a6e22e">n3:adSize=</span><span style="color:#e6db74">&#34;MEDIUM_RECTANGLE&#34;</span> <span style="color:#a6e22e">n3:adUnitId=</span><span style="color:#e6db74">&#34;@string/banner_ad_unit_id&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/LinearLayout&gt;</span>
+</span></span></code></pre></div><p>Removing it would surely break that application, so I followed its usages to a <code>Java</code> class. I managed to find this reference to the layout above:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>LinearLayout<span style="color:#f92672">)</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">layout_adView</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>For this method to work I had to find every such occurrence and either cleverly comment it out or remove it entirely.
+This proved to be even more difficult since I had to also search for and remove any additional code that depended on it.
+I soon realized that this method would require a lot of time and decided to go with the other options.</p>
+<p>I had finally achieved what I set out to do. The Bible app was ad free and working as I wanted it to.
+I&rsquo;ve been using it for a few days, and I haven&rsquo;t encountered any unwanted ads.</p>
+</li>
+</ol>
+<h5 id="conclusion">Conclusion</h5>
+<p>There may be better ways to get rid of unwanted ads. There may also be better ways to do what I just did.
+I found reverse engineering (if I can call this that) both challenging and exciting.</p>
+<p>It wasn&rsquo;t my intention to undermine the app developer&rsquo;s work in any way, so I can surely be forgiven for being inquisitive.</p>
+	</div>
+	<div class="buttons">
+	<button class="bottom-menu">
+		<i data-feather="menu"></i>
+	</button>
+	<div id="socials">
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fjapodhidev.github.io%2fposts%2freverse-engineering-an-apk%2f" data-bs-toggle="tooltip" title="Share on LinkedIn">
+			<i data-feather="linkedin"></i>
+		</a>
+		<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<a href="#" class="top" data-bs-toggle="tooltip" title="Back to top">
+			<i data-feather="arrow-up"></i>
+		</a>
+	</div>
+</div>
+</div>
+
+        </div><footer>
+	<div id="footer" class="mt-5 mb-2">
+		<p>&#9874; by <a href="https://twitter.com/japodhi_dev/">Japodhi</a></p>
+		<p>2021</p>
+		<p>Powered by <a href="htttp://gohugo.io">Hugo</a></p>
+	</div>
+</footer><script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+
+<script >
+	$('.buttons').css('width', 'max-content');
+	$('#socials').css('display', 'none');
+	$('.bottom-menu').css('display', 'none');
+
+	$( window ).on('scroll', function () {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			$('.bottom-menu').css('display', 'block').fadeIn("slow");
+		}
+	})
+
+	$('.bottom-menu').on('click', function () {
+		
+		let btnWidth = $('.buttons').css("width");
+		console.log(btnWidth);
+		if (btnWidth == 'max-content') {
+			$('.buttons').css('width', '260px');
+		} else if (btnWidth == '260px') {
+			$('.buttons').css('width', 'max-content');
+		}
+
+		$('#socials').toggle("slow");
+	})
+
+	$('.top').on('click', function(event) {
+		event.preventDefault();
+		$(document).scrollTop(0);
+		$('#socials').toggle("slow")
+	});
+</script></body>
+</html>

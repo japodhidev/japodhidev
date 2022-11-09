@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    
+    <title>Japodhi&#39;s Blog | welcome</title>
+</head>
+
+<div id="nav-wrapper" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+        <a href="/" class="navbar-brand">Japodhi's Blog</a>
+        <div class="menu">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        
+                        Home
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/posts/" class="nav-link">
+                        
+                        Posts
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/about/" class="nav-link">
+                        
+                        About
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        <div id="custom-collapse">
+            <ul class="custom-ul-navbar">
+                
+                <li class="custom-nav-item">
+                    <a href="/" class="custom-nav-link" data-bs-toggle="tooltip" title="Home">
+                        <i data-feather="home"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/posts/" class="custom-nav-link" data-bs-toggle="tooltip" title="Posts">
+                        <i data-feather="pen-tool"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/about/" class="custom-nav-link" data-bs-toggle="tooltip" title="About">
+                        <i data-feather="info"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</div><body><div id="content" class="container-fluid">
+<div class="title">
+	<h1>welcome</h1>
+</div>
+
+<div class="post-list">
+    <span><a class="title" href="/about/">About</a></span>
+    <div class="metadata">
+	<div class="meta-date">
+		
+		
+		<i data-feather="calendar"></i>
+		<time datetime="24245-24-2424">May 24, 2021</time>
+	</div>
+	<div class="meta-tags">
+		
+		<i data-feather="tag"></i>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/about">about</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/welcome">welcome</a>
+		
+		
+	</div>
+</div>
+    <div class="summary" href="/about/">
+        <p><h5 id="hello-and-welcome">Hello and welcome.</h5></p>
+    </div>
+</div>
+
+<div class="post-list">
+    <span><a class="title" href="/posts/my-first-post/">My First Post</a></span>
+    <div class="metadata">
+	<div class="meta-date">
+		
+		
+		<i data-feather="calendar"></i>
+		<time datetime="26261-11-2611">Jan 26, 2020</time>
+	</div>
+	<div class="meta-tags">
+		
+		<i data-feather="tag"></i>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/welcome">welcome</a>
+		
+		
+	</div>
+</div>
+    <div class="summary" href="/posts/my-first-post/">
+        <p><h5 id="hello-world">Hello, world!</h5></p>
+    </div>
+</div>
+
+
+        </div><footer>
+	<div id="footer" class="mt-5 mb-2">
+		<p>&#9874; by <a href="https://twitter.com/japodhi_dev/">Japodhi</a></p>
+		<p>2021</p>
+		<p>Powered by <a href="htttp://gohugo.io">Hugo</a></p>
+	</div>
+</footer><script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+
+<script >
+	$('.buttons').css('width', 'max-content');
+	$('#socials').css('display', 'none');
+	$('.bottom-menu').css('display', 'none');
+
+	$( window ).on('scroll', function () {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			$('.bottom-menu').css('display', 'block').fadeIn("slow");
+		}
+	})
+
+	$('.bottom-menu').on('click', function () {
+		
+		let btnWidth = $('.buttons').css("width");
+		console.log(btnWidth);
+		if (btnWidth == 'max-content') {
+			$('.buttons').css('width', '260px');
+		} else if (btnWidth == '260px') {
+			$('.buttons').css('width', 'max-content');
+		}
+
+		$('#socials').toggle("slow");
+	})
+
+	$('.top').on('click', function(event) {
+		event.preventDefault();
+		$(document).scrollTop(0);
+		$('#socials').toggle("slow")
+	});
+</script></body>
+</html>

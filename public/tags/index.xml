@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Japodhi&#39;s Blog</title>
+    <link>https://japodhidev.github.io/tags/</link>
+    <description>Recent content in Tags on Japodhi&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 24 May 2021 20:24:56 +0300</lastBuildDate><atom:link href="https://japodhidev.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>about</title>
+      <link>https://japodhidev.github.io/tags/about/</link>
+      <pubDate>Mon, 24 May 2021 20:24:56 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/tags/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>welcome</title>
+      <link>https://japodhidev.github.io/tags/welcome/</link>
+      <pubDate>Mon, 24 May 2021 20:24:56 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/tags/welcome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://japodhidev.github.io/tags/android/</link>
+      <pubDate>Wed, 19 May 2021 12:46:15 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://japodhidev.github.io/tags/java/</link>
+      <pubDate>Wed, 19 May 2021 12:46:15 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reverse engineering</title>
+      <link>https://japodhidev.github.io/tags/reverse-engineering/</link>
+      <pubDate>Wed, 19 May 2021 12:46:15 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/tags/reverse-engineering/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

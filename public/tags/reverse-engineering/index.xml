@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse engineering on Japodhi&#39;s Blog</title>
+    <link>https://japodhidev.github.io/tags/reverse-engineering/</link>
+    <description>Recent content in reverse engineering on Japodhi&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 19 May 2021 12:46:15 +0300</lastBuildDate><atom:link href="https://japodhidev.github.io/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reverse Engineering an Apk</title>
+      <link>https://japodhidev.github.io/posts/reverse-engineering-an-apk/</link>
+      <pubDate>Wed, 19 May 2021 12:46:15 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/posts/reverse-engineering-an-apk/</guid>
+      <description>&lt;h5 id=&#34;getting-rid-of-interstitial-ads-in-an-android-application&#34;&gt;Getting rid of Interstitial ads in an Android application.&lt;/h5&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

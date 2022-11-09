@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    
+    <title>Japodhi&#39;s Blog | About</title>
+</head>
+
+<div id="nav-wrapper" class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+        <a href="/" class="navbar-brand">Japodhi's Blog</a>
+        <div class="menu">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        
+                        Home
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/posts/" class="nav-link">
+                        
+                        Posts
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/about/" class="nav-link">
+                        
+                        About
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        <div id="custom-collapse">
+            <ul class="custom-ul-navbar">
+                
+                <li class="custom-nav-item">
+                    <a href="/" class="custom-nav-link" data-bs-toggle="tooltip" title="Home">
+                        <i data-feather="home"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/posts/" class="custom-nav-link" data-bs-toggle="tooltip" title="Posts">
+                        <i data-feather="pen-tool"></i>
+                    </a>
+                </li>
+                
+                <li class="custom-nav-item">
+                    <a href="/about/" class="custom-nav-link" data-bs-toggle="tooltip" title="About">
+                        <i data-feather="info"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</div><body><div id="content" class="container-fluid">
+<div class="post">
+	<div class="post-header">
+		<h1>About</h1>
+	</div>
+	<div class="metadata">
+	<div class="meta-date">
+		
+		
+		<i data-feather="calendar"></i>
+		<time datetime="24245-24-2424">May 24, 2021</time>
+	</div>
+	<div class="meta-tags">
+		
+		<i data-feather="tag"></i>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/about">about</a>
+		
+		
+		<a class="btn btn-sm btn-outline-dark tag-btn" href="https://japodhidev.github.io/tags/welcome">welcome</a>
+		
+		
+	</div>
+</div>
+	<div class="post-content">
+		<h5 id="hello-and-welcome">Hello and welcome.</h5>
+<p>My name is Finch Ochieng (Japodhi). I&rsquo;m a computer programmer based in Nairobi, Kenya. I love being around computers and especially enjoy ordering them around.
+This here is my blog. My quiet little corner on the internet where I share my thoughts and experiences.</p>
+<p>I&rsquo;ll mainly be writing about my experiences in the fields of software development and computer science in general.
+The nature of the content found here is therefore supposed to be informative and hopefully educational.
+Should you find the content offensive or inappropriate in any way please do let me know.</p>
+<p>It&rsquo;s important to state that any opinions expressed on here are my own.
+I am <strong>NOT</strong> affiliated to any organisation/firm/company/institution that I may mention in the written contents of this blog.</p>
+	</div>
+	<div class="buttons">
+	<button class="bottom-menu">
+		<i data-feather="menu"></i>
+	</button>
+	<div id="socials">
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fjapodhidev.github.io%2fabout%2f" data-bs-toggle="tooltip" title="Share on LinkedIn">
+			<i data-feather="linkedin"></i>
+		</a>
+		<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<a href="#" class="top" data-bs-toggle="tooltip" title="Back to top">
+			<i data-feather="arrow-up"></i>
+		</a>
+	</div>
+</div>
+</div>
+
+        </div><footer>
+	<div id="footer" class="mt-5 mb-2">
+		<p>&#9874; by <a href="https://twitter.com/japodhi_dev/">Japodhi</a></p>
+		<p>2021</p>
+		<p>Powered by <a href="htttp://gohugo.io">Hugo</a></p>
+	</div>
+</footer><script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+
+<script >
+	$('.buttons').css('width', 'max-content');
+	$('#socials').css('display', 'none');
+	$('.bottom-menu').css('display', 'none');
+
+	$( window ).on('scroll', function () {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			$('.bottom-menu').css('display', 'block').fadeIn("slow");
+		}
+	})
+
+	$('.bottom-menu').on('click', function () {
+		
+		let btnWidth = $('.buttons').css("width");
+		console.log(btnWidth);
+		if (btnWidth == 'max-content') {
+			$('.buttons').css('width', '260px');
+		} else if (btnWidth == '260px') {
+			$('.buttons').css('width', 'max-content');
+		}
+
+		$('#socials').toggle("slow");
+	})
+
+	$('.top').on('click', function(event) {
+		event.preventDefault();
+		$(document).scrollTop(0);
+		$('#socials').toggle("slow")
+	});
+</script></body>
+</html>

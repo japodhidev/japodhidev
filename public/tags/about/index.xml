@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>about on Japodhi&#39;s Blog</title>
+    <link>https://japodhidev.github.io/tags/about/</link>
+    <description>Recent content in about on Japodhi&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 24 May 2021 20:24:56 +0300</lastBuildDate><atom:link href="https://japodhidev.github.io/tags/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://japodhidev.github.io/about/</link>
+      <pubDate>Mon, 24 May 2021 20:24:56 +0300</pubDate>
+      
+      <guid>https://japodhidev.github.io/about/</guid>
+      <description>&lt;h5 id=&#34;hello-and-welcome&#34;&gt;Hello and welcome.&lt;/h5&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
