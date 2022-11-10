@@ -61,5 +61,5 @@ I must say, there's no shortage of color pickers online, [iro.js](https://iro.js
 The project is perfect for my daily use. Plus it's relatively straightforward to fire up and use.
 I should mention that it's still under a continuous state of improvement and development.
 
-[HSL Color Picker](https://bitbucket.org/japodhidev/hsl-color-picker/) is available in my repository. It's also hosted on `Vercel` at this [location](https://color-picker-virid.vercel.app/color).
+[HSL Color Picker](https://bitbucket.org/japodhidev/hsl-color-picker/) is available in my repository. It's also hosted on `Vercel` at this [location](https://hsl-color-picker-japodhidev.vercel.app/).
 
